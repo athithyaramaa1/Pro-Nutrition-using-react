@@ -1,61 +1,57 @@
-import './App.css'
-import FoodData from '../../resources/FoodData'
-import { Component } from 'react'
-import Food from './Components/Food'
+import './App.css';
+import FoodData from '../../resources/FoodData';
+import { Component } from 'react';
+import Food from './Components/Food';
 
 export default class App extends Component {
   constructor(props) {
-    super(props)
-  
+    super(props);
+
     this.state = {
-       foodArray: FoodData
-    }
+      foodArray: FoodData,
+    };
   }
-  
-  render() {
-    let foodDataArray = this.state.foodArray
 
-    const handleInputRec = (event) => {
-      if(event.target.value == ''){
-        return this.setState({foodArray: FoodData})
-      }
-      let inputValue = event.target.value.toLowerCase();
-
-      let modifiedArray = foodDataArray.filter((ele, idx) => {
-        let name = ele.name;
-        return name.includes(inputValue)
-      })
-      this.setState({foodArray: modifiedArray})
+  handleInputRec = (event) => {
+    if (event.target.value === '') {
+      return this.setState({ foodArray: FoodData });
     }
+
+    const inputValue = event.target.value.toLowerCase();
+
+    const modifiedArray = this.state.foodArray.filter((ele) =>
+      ele.name.toLowerCase().includes(inputValue)
+    );
+
+    this.setState({ foodArray: modifiedArray });
+  };
+
+  render() {
+    const { foodArray } = this.state;
+
     return (
-      <div>
+      <div className="app-container">
         <div>
           <h3>Search</h3>
           <input
             type="text"
             placeholder="Search for Food Item..."
-            onChange={handleInputRec}
+            onChange={this.handleInputRec}
+            style={{width: '500px'}}
           />
         </div>
 
-        {foodDataArray.map((element, index) => {
-          let name = element.name;
-          let calorie = element.cal;
-          let image = element.img;
-
-          return (
-            <div key={index}>
-              <Food
-                Name={name}
-                Calorie={calorie}
-                Image={image}
-                Index={index}
-              />
-            </div>
-          );
-        })}
+        {foodArray.map((element, index) => (
+          <div key={index}>
+            <Food
+              Name={element.name}
+              Calorie={element.cal}
+              Image={element.img}
+              Index={index}
+            />
+          </div>
+        ))}
       </div>
-    )
+    );
   }
 }
-

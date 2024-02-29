@@ -1,37 +1,56 @@
-.media{
+
+ .app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fffdfd; 
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.food-item {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #564c4c;
+  border-radius: 5px;
+  background-color: #c0b4b4; 
+}
+
+.food-item img {
+  max-width: 100px; 
+  height: auto;
+  margin-right: 10px;
+}
+
+.food-details {
+  flex: 1; 
+}
+
+.food-controls {
+  display: flex;
+  align-items: center;
+}
+
+button {
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+input {
+  width: 40px;
+}
+
+.food-detail{
+  display: flex;
+  align-items: center;
   justify-content: space-around;
-  align-items: center;
+  margin-left: 360px;
+  margin-top: -50px
 }
 
-.imageoffood{
-  height: 56px;
-}
-
-.incbutton{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.box{
-  width:50%;
-  margin-top: 30px;
-  background-color: #c080805c;
-}
-
-.reset{
-  background-color: rgb(136, 123, 123);
-  color:rgb(160, 151, 151);
-  border: none;
-}
-
-.calcCalorie{
-  display: flex;
-  gap:10px;
-}
-
-.container{
-  display: flex;
-  align-items: center;
+.numb{
+  margin-left: 290px;
+  width: 100%;
 }
